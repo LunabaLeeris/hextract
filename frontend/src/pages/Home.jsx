@@ -33,37 +33,47 @@ function Home() {
     <div className="app">
       {/* Header & Navigation */}
       <header>
-        <div className="container">
-          <nav>
-            <div className="logo">HextractDocs</div>
-            <ul className="nav-links">
-              <li>
-                <a href="#services">Services</a>
-              </li>
-              <li>
-                <a href="#features">Process</a>
-              </li>
-              <li>
-                <a href="#pricing">Metrics</a>
-              </li>
-              <li>
-                <button 
-                  className="nav-link-btn"
-                  onClick={() => navigate("/about")}
-                >
-                  About
-                </button>
-              </li>
-              <li>
-                <a href="#footer">Contact</a>
-              </li>
-            </ul>
-            <button className="theme-toggle" onClick={toggleTheme}>
-              {theme === "light" ? (
-                <Moon strokeWidth={1.5} size={24} />
-              ) : (
-                <Sun strokeWidth={1.5} size={24} />
-              )}
+        <div className="container-full">
+          <nav className="navbar">
+            <div className="nav-title">
+              <div className="logo">HextractDocs</div>
+            </div>
+            <div className="nav-pages">
+              <ul className="nav-links">
+                <li>
+                  <a href="#services">Services</a>
+                </li>
+                <li>
+                  <a href="#features">Process</a>
+                </li>
+                <li>
+                  <a href="#pricing">Metrics</a>
+                </li>
+                <li>
+                  <button
+                    className="nav-link-btn"
+                    onClick={() => navigate("/about")}
+                  >
+                    About
+                  </button>
+                </li>
+                <li>
+                  <a href="#footer">Contact</a>
+                </li>
+              </ul>
+              {/* <button className="theme-toggle" onClick={toggleTheme}>
+                {theme === "light" ? (
+                  <Moon strokeWidth={1.5} size={24} />
+                ) : (
+                  <Sun strokeWidth={1.5} size={24} />
+                )}
+              </button> */}
+            </div>
+            <button
+              className="button nav-cta"
+              onClick={() => navigate("/services")}
+            >
+              Book a Demo
             </button>
           </nav>
         </div>
@@ -71,15 +81,24 @@ function Home() {
 
       {/* Hero Section */}
       <section className="hero">
-        <div className="container">
-          <h1>Document extraction that works 100% of the time</h1>
-          <p className="subtitle">
-            We will tranform your physical and digital documents to exactly 
-            how your business need it to be. Worry about your product, let's handle the rest.
-          </p>
-          <div className="cta-buttons">
-            <button className="button">Book a Demo</button>
-            <button className="button button-secondary">Contact Us</button>
+        <div className="container-full">
+          <div className="hero-content">
+            <h1 className="hero-title">
+              Document extraction that works 100% of the time
+            </h1>
+            <div className="demo-video-container">
+              <div className="demo-video">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/4SCjXcBeW1E?autoplay=1&mute=0"
+                  title="HextractDocs Demo"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -87,7 +106,7 @@ function Home() {
       {/* Partners Section */}
       <section className="partners">
         <div className="container">
-          <h2>Trusted by Industry Leaders</h2>
+          <h2 className="page-title">Trusted by Industry Leaders</h2>
           <div className="partners-scroll">
             <div className="partners-track">
               <div className="partner-logo">🏢 TechCorp</div>
@@ -115,7 +134,7 @@ function Home() {
       {/* Services Section */}
       <section className="services" id="services">
         <div className="container">
-          <h2>Services We Offer</h2>
+          <h2 className="page-title">Services We Offer</h2>
           <div className="services-grid">
             <div className="service-card">
               <div className="service-icon">
@@ -123,10 +142,11 @@ function Home() {
               </div>
               <h3>Physical Extraction</h3>
               <p>
-                Trust us with your physical documents and we will handle the rest.
-                We'll receive, scan, extract, and convert them to the exact format your business needs.
+                Trust us with your physical documents and we will handle the
+                rest. We'll receive, scan, extract, and convert them to the
+                exact format your business needs.
               </p>
-              <button 
+              <button
                 className="button button-secondary"
                 onClick={() => navigate("/services")}
               >
@@ -139,11 +159,11 @@ function Home() {
               </div>
               <h3>Digital Extraction</h3>
               <p>
-                Already have digital documents? Great, send us a copy and 
-                we'll extract and convert them to be ready for you to integrate 
-                to your business.
+                Already have digital documents? Great, send us a copy and we'll
+                extract and convert them to be ready for you to integrate to
+                your business.
               </p>
-              <button 
+              <button
                 className="button button-secondary"
                 onClick={() => navigate("/services")}
               >
@@ -157,7 +177,7 @@ function Home() {
       {/* Metrics Section */}
       <section className="metrics" id="pricing">
         <div className="container">
-          <h2>Our Impact by the Numbers</h2>
+          <h2 className="page-title">Our Impact by the Numbers</h2>
           <div className="metrics-grid">
             <div className="metric-card">
               <div className="metric-number">500+</div>
@@ -224,8 +244,8 @@ function Home() {
                   </div>
                   <h3>Extraction</h3>
                   <p>
-                    We extract and process your documents using a hybrid of 
-                    OCR and manual annotation to ensure 100% accuracy.
+                    We extract and process your documents using a hybrid of OCR
+                    and manual annotation to ensure 100% accuracy.
                   </p>
                 </div>
               </div>
@@ -236,8 +256,8 @@ function Home() {
                   </div>
                   <h3>Delivery</h3>
                   <p>
-                    Receive your documents in the format you requested,
-                    ready for integration.
+                    Receive your documents in the format you requested, ready
+                    for integration.
                   </p>
                 </div>
                 <div className="timeline-marker">5</div>
@@ -250,64 +270,116 @@ function Home() {
       {/* Competitor Analysis Section */}
       <section className="competitor-analysis">
         <div className="container">
-          <h2>Why Choose HextractDocs?</h2>
+          <h2 className="page-title">Why Choose HextractDocs?</h2>
           <p className="section-subtitle">
             Compare us with other document extraction services
           </p>
           <div className="comparison-table">
             <div className="comparison-header">
-              <div className="feature-col"><span style={{color: "white"}}>Features</span></div>
-              <div className="provider-col"><span style={{color: "white"}}>HextractDocs</span></div>
+              <div className="feature-col">
+                <span style={{ color: "white" }}>Features</span>
+              </div>
+              <div className="provider-col">
+                <span style={{ color: "white" }}>HextractDocs</span>
+              </div>
               <div className="provider-col">Competitor A</div>
               <div className="provider-col">Competitor B</div>
             </div>
             <div className="comparison-row">
               <div className="feature-col">AI-Ready Format</div>
-              <div className="provider-col"><span className="checkmark">✓</span></div>
-              <div className="provider-col"><span className="cross">✕</span></div>
-              <div className="provider-col"><span className="checkmark">✓</span></div>
+              <div className="provider-col">
+                <span className="checkmark">✓</span>
+              </div>
+              <div className="provider-col">
+                <span className="cross">✕</span>
+              </div>
+              <div className="provider-col">
+                <span className="checkmark">✓</span>
+              </div>
             </div>
             <div className="comparison-row">
               <div className="feature-col">Hybrid OCR + Manual Annotation</div>
-              <div className="provider-col"><span className="checkmark">✓</span></div>
-              <div className="provider-col"><span className="checkmark">✓</span></div>
-              <div className="provider-col"><span className="cross">✕</span></div>
+              <div className="provider-col">
+                <span className="checkmark">✓</span>
+              </div>
+              <div className="provider-col">
+                <span className="checkmark">✓</span>
+              </div>
+              <div className="provider-col">
+                <span className="cross">✕</span>
+              </div>
             </div>
             <div className="comparison-row">
               <div className="feature-col">100% Accuracy Guarantee</div>
-              <div className="provider-col"><span className="checkmark">✓</span></div>
-              <div className="provider-col"><span className="cross">✕</span></div>
-              <div className="provider-col"><span className="cross">✕</span></div>
+              <div className="provider-col">
+                <span className="checkmark">✓</span>
+              </div>
+              <div className="provider-col">
+                <span className="cross">✕</span>
+              </div>
+              <div className="provider-col">
+                <span className="cross">✕</span>
+              </div>
             </div>
             <div className="comparison-row">
               <div className="feature-col">Physical Document Support</div>
-              <div className="provider-col"><span className="checkmark">✓</span></div>
-              <div className="provider-col"><span className="checkmark">✓</span></div>
-              <div className="provider-col"><span className="checkmark">✓</span></div>
+              <div className="provider-col">
+                <span className="checkmark">✓</span>
+              </div>
+              <div className="provider-col">
+                <span className="checkmark">✓</span>
+              </div>
+              <div className="provider-col">
+                <span className="checkmark">✓</span>
+              </div>
             </div>
             <div className="comparison-row">
               <div className="feature-col">Digital Document Support</div>
-              <div className="provider-col"><span className="checkmark">✓</span></div>
-              <div className="provider-col"><span className="checkmark">✓</span></div>
-              <div className="provider-col"><span className="checkmark">✓</span></div>
+              <div className="provider-col">
+                <span className="checkmark">✓</span>
+              </div>
+              <div className="provider-col">
+                <span className="checkmark">✓</span>
+              </div>
+              <div className="provider-col">
+                <span className="checkmark">✓</span>
+              </div>
             </div>
             <div className="comparison-row">
               <div className="feature-col">24 hour client support</div>
-              <div className="provider-col"><span className="checkmark">✓</span></div>
-              <div className="provider-col"><span className="cross">✕</span></div>
-              <div className="provider-col"><span className="checkmark">✓</span></div>
+              <div className="provider-col">
+                <span className="checkmark">✓</span>
+              </div>
+              <div className="provider-col">
+                <span className="cross">✕</span>
+              </div>
+              <div className="provider-col">
+                <span className="checkmark">✓</span>
+              </div>
             </div>
             <div className="comparison-row">
               <div className="feature-col">Free Initial Consultation</div>
-              <div className="provider-col"><span className="checkmark">✓</span></div>
-              <div className="provider-col"><span className="cross">✕</span></div>
-              <div className="provider-col"><span className="cross">✕</span></div>
-            </div>  
+              <div className="provider-col">
+                <span className="checkmark">✓</span>
+              </div>
+              <div className="provider-col">
+                <span className="cross">✕</span>
+              </div>
+              <div className="provider-col">
+                <span className="cross">✕</span>
+              </div>
+            </div>
             <div className="comparison-row">
               <div className="feature-col">Philippines-Based Support</div>
-              <div className="provider-col"><span className="checkmark">✓</span></div>
-              <div className="provider-col"><span className="cross">✕</span></div>
-              <div className="provider-col"><span className="cross">✕</span></div>
+              <div className="provider-col">
+                <span className="checkmark">✓</span>
+              </div>
+              <div className="provider-col">
+                <span className="cross">✕</span>
+              </div>
+              <div className="provider-col">
+                <span className="cross">✕</span>
+              </div>
             </div>
           </div>
         </div>
@@ -318,8 +390,8 @@ function Home() {
         <div className="container">
           <h2>Ready to Transform Your Documents?</h2>
           <p>
-            Let us handle your documents so you only worry about your product. Get a
-            free consultation and cost estimate today.
+            Let us handle your documents so you only worry about your product.
+            Get a free consultation and cost estimate today.
           </p>
           <button className="button">Schedule Your Meeting</button>
         </div>
@@ -350,7 +422,7 @@ function Home() {
               <h4>Company</h4>
               <ul>
                 <li>
-                  <button 
+                  <button
                     className="footer-link-btn"
                     onClick={() => navigate("/about")}
                   >
