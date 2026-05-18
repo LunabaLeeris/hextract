@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import {
   Phone,
   FileText,
@@ -15,6 +16,16 @@ import {
 function Home() {
   const [theme, setTheme] = useState("light");
   const navigate = useNavigate();
+
+  // Scroll animation refs for each section
+  const heroRef = useScrollAnimation();
+  const partnersRef = useScrollAnimation();
+  const servicesRef = useScrollAnimation();
+  const metricsRef = useScrollAnimation();
+  const processRef = useScrollAnimation();
+  const competitorRef = useScrollAnimation();
+  const ctaRef = useScrollAnimation();
+  const footerRef = useScrollAnimation();
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") || "light";
@@ -80,7 +91,7 @@ function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="hero">
+      <section className="hero" ref={heroRef}>
         <div className="container-full">
           <div className="hero-content">
             <h1 className="hero-title">
@@ -104,8 +115,8 @@ function Home() {
       </section>
 
       {/* Partners Section */}
-      <section className="partners">
-        <div className="container">
+      <section className="partners" ref={partnersRef}>
+        <div className="container-full">
           <h2 className="page-title">Trusted by Industry Leaders</h2>
           <div className="partners-scroll">
             <div className="partners-track">
@@ -132,11 +143,11 @@ function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="services" id="services">
-        <div className="container">
+      <section className="services" id="services" ref={servicesRef}>
+        <div className="container-full">
           <h2 className="page-title">Services We Offer</h2>
           <div className="services-grid">
-            <div className="service-card">
+            <div onClick={() => navigate("/services")} className="service-card">
               <div className="service-icon">
                 <Layers strokeWidth={1.5} size={50} />
               </div>
@@ -146,14 +157,9 @@ function Home() {
                 rest. We'll receive, scan, extract, and convert them to the
                 exact format your business needs.
               </p>
-              <button
-                className="button button-secondary"
-                onClick={() => navigate("/services")}
-              >
-                Learn More
-              </button>
+              <p><span className="info">click to learn more</span></p>
             </div>
-            <div className="service-card">
+            <div onClick={() => navigate("/services")} className="service-card">
               <div className="service-icon">
                 <HardDrive strokeWidth={1.5} size={50} />
               </div>
@@ -163,20 +169,15 @@ function Home() {
                 extract and convert them to be ready for you to integrate to
                 your business.
               </p>
-              <button
-                className="button button-secondary"
-                onClick={() => navigate("/services")}
-              >
-                Learn More
-              </button>
+              <p><span className="info">click to learn more</span></p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Metrics Section */}
-      <section className="metrics" id="pricing">
-        <div className="container">
+      <section className="metrics" id="pricing" ref={metricsRef}>
+        <div className="container-full">
           <h2 className="page-title">Our Impact by the Numbers</h2>
           <div className="metrics-grid">
             <div className="metric-card">
@@ -205,8 +206,8 @@ function Home() {
       </section>
 
       {/* Agreement Process Section */}
-      <section className="process" id="features">
-        <div className="container">
+      <section className="process" id="features" ref={processRef}>
+        <div className="container-full">
           <h2>Our Agreement Process</h2>
           <div className="timeline-container">
             <div className="timeline">
@@ -268,8 +269,8 @@ function Home() {
       </section>
 
       {/* Competitor Analysis Section */}
-      <section className="competitor-analysis">
-        <div className="container">
+      <section className="competitor-analysis" ref={competitorRef}>
+        <div className="container-full">
           <h2 className="page-title">Why Choose HextractDocs?</h2>
           <p className="section-subtitle">
             Compare us with other document extraction services
@@ -382,12 +383,12 @@ function Home() {
               </div>
             </div>
           </div>
-        </div>
+        </div>  
       </section>
 
       {/* CTA Section */}
-      <section className="cta">
-        <div className="container">
+      <section className="cta" ref={ctaRef}>
+        <div className="container-full">
           <h2>Ready to Transform Your Documents?</h2>
           <p>
             Let us handle your documents so you only worry about your product.
@@ -398,8 +399,8 @@ function Home() {
       </section>
 
       {/* Footer */}
-      <footer id="footer">
-        <div className="container">
+      <footer id="footer" ref={footerRef}>
+        <div className="container-full">
           <div className="footer-content">
             <div className="footer-section">
               <h4>Product</h4>

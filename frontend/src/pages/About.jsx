@@ -1,15 +1,25 @@
 import { useNavigate } from "react-router-dom";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import { ArrowLeft, Users, Target, Heart, Zap } from "lucide-react";
 
 function About() {
   const navigate = useNavigate();
+
+  // Scroll animation refs for each section
+  const storyRef = useScrollAnimation();
+  const missionRef = useScrollAnimation();
+  const valueRef = useScrollAnimation();
+  const teamRef = useScrollAnimation();
+  const reasonsRef = useScrollAnimation();
+  const statsRef = useScrollAnimation();
+  const ctaRef = useScrollAnimation();
 
   return (
     <div className="app">
       {/* Header */}
       <header>
         <div className="container">
-          <nav>
+          <nav className="navbar">
             <div className="logo">HextractDocs</div>
             <ul className="nav-links">
               <li>
@@ -26,31 +36,36 @@ function About() {
       </header>
 
       {/* About Hero Section */}
-      <section className="page-hero">
-        <div className="container">
-          <h1>About HextractDocs</h1>
-          <p className="subtitle">
-            Transforming how businesses handle documents through intelligent extraction and AI-ready formatting
-          </p>
+      <section className="about-hero">
+        <div className="container-mini">
+            <div className="page-hero">
+            <div className="container">
+            <h3>About HextractDocs</h3>
+            <p>
+                Transforming how businesses handle documents through intelligent extraction and AI-ready formatting
+            </p>
         </div>
-      </section>
+        </div>
+      </div>
 
       {/* Our Story Section */}
-      <section className="page-section">
-        <div className="container">
-          <h2>Our Story</h2>
-          <p className="section-text">
+      <div className="page-section">
+        <div className="container-full">
+          <h3>Our Story</h3>
+          <p>
             HextractDocs was founded with a simple mission: to eliminate the tedious, error-prone process of manual document entry. We realized that thousands of businesses spend countless hours converting physical and digital documents into formats their systems can understand.
           </p>
           <p className="section-text">
             What started as a small team of document processing experts has grown into an industry leader, trusted by over 500 companies to handle millions of documents. We combine cutting-edge OCR technology with human expertise to deliver unmatched accuracy and reliability.
           </p>
         </div>
+      </div>
       </section>
 
+      
       {/* Our Mission Section */}
       <section className="page-section">
-        <div className="container">
+        <div className="container-full">
           <div className="mission-grid">
             <div className="mission-card">
               <Target strokeWidth={1.5} size={40} />
@@ -84,10 +99,54 @@ function About() {
         </div>
       </section>
 
+      {/* Value Section */}
+      <section className="page-section">
+        <div className="container-full">
+          <h3>Our Value</h3>
+          <p className="section-intro">
+            HextractDocs is built with one mission in mind: to help businesses transform their virtual or even physical documents to machine-ready formats that is exactly what their products need.
+          </p>
+          <p className="section-intro" style={{ marginBottom: "var(--spacing-2xl)" }}>
+            Hextract Docs exists to transform digital and physical documents into the precise machine-readable formats required by client systems. We resolve the following industry limitations:
+          </p>
+          
+          <div className="value-grid">
+            <div className="value-card">
+              <div className="value-number">1</div>
+              <h3>Over-reliance on OCR</h3>
+              <p>
+                Competitors rely exclusively on Optical Character Recognition (OCR) for data extraction; when OCR fails, data integrity is compromised. Hextract Docs mitigates this via a hybrid model. By integrating human oversight, an advanced annotation system, and diverse OCR methodologies, we deploy trained annotators to guarantee maximum data accuracy.
+              </p>
+            </div>
+            <div className="value-card">
+              <div className="value-number">2</div>
+              <h3>Operational Inflexibility</h3>
+              <p>
+                Competitors license rigid software products. Hextract Docs provides a dedicated service. Through continuous collaborative support, we tailor the extraction pipeline to meet exactly what our clients need.
+              </p>
+            </div>
+            <div className="value-card">
+              <div className="value-number">3</div>
+              <h3>Physical Document Processing</h3>
+              <p>
+                For local businesses, we manage the entire lifecycle of physical documents—including scanning, storage, and secure data transfer—allowing clients to focus more on their products.
+              </p>
+            </div>
+            <div className="value-card">
+              <div className="value-number">4</div>
+              <h3>Opaque Data Security</h3>
+              <p>
+                Standard services require off-site document uploads, obscuring storage, processing, and utilization protocols (often exposing sensitive data to external LLMs). Hextract Docs operates with absolute transparency. We provide complete visibility into our data storage, processing architecture, and annotation protocols, backed by comprehensive service warranties.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Team Section */}
       <section className="page-section">
-        <div className="container">
-          <h2>Our Team</h2>
+        <div className="container-full">
+          <h3>Our Team</h3>
           <p className="section-intro">
             Led by industry veterans with decades of combined experience in document processing, OCR technology, and business automation.
           </p>
@@ -130,8 +189,11 @@ function About() {
 
       {/* Why Choose Us Section */}
       <section className="page-section">
-        <div className="container">
-          <h2>Why Choose HextractDocs?</h2>
+        <div className="container-full">
+          <h3>Why Choose HextractDocs?</h3>
+          <p className="section-intro">
+            We are not just a service provider—we are your partner in transforming how you handle documents. Here’s why hundreds of companies choose us:
+          </p>  
           <div className="reasons-grid">
             <div className="reason-card">
               <div className="reason-number">1</div>
@@ -167,38 +229,13 @@ function About() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="page-section">
-        <div className="container">
-          <h2>By The Numbers</h2>
-          <div className="stats-grid">
-            <div className="stat-item">
-              <div className="stat-number">500+</div>
-              <p>Companies Trust Us</p>
-            </div>
-            <div className="stat-item">
-              <div className="stat-number">2.5M+</div>
-              <p>Documents Processed</p>
-            </div>
-            <div className="stat-item">
-              <div className="stat-number">99.8%</div>
-              <p>Average Accuracy</p>
-            </div>
-            <div className="stat-item">
-              <div className="stat-number">8+</div>
-              <p>Years of Excellence</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="about-cta">
         <div className="container">
           <h2>Let's Transform Your Documents Together</h2>
           <p>Join hundreds of companies that trust HextractDocs with their document processing</p>
           <button className="button">Get Started Today</button>
-        </div>
+        </div>  
       </section>
 
       {/* Footer */}
