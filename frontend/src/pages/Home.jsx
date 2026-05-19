@@ -32,6 +32,64 @@ function Home() {
   const competitorRef = useScrollAnimation();
   const statsRef = useScrollAnimation();
   const contactRef = useScrollAnimation();
+  const [selectedServiceId, setSelectedServiceId] = useState("physical"); // Default to Physical expanded
+
+  const serviceDetails = [
+    {
+      id: "physical",
+      title: "Physical Extraction",
+      icon: <Layers strokeWidth={1.5} size={50} />,
+      summary: "Trust us with your physical documents and we will handle the rest. We'll receive, scan, extract, and convert them to the exact format your business needs.",
+      detailedDescription: (
+        <>
+          <p>
+            Our Physical Extraction service is designed for businesses dealing with paper-based documents.
+            We provide a secure and efficient process to convert your physical records into digital, AI-ready formats.
+          </p>
+          <p>
+            This includes:
+            <ul>
+              <li>Secure document pickup and transport.</li>
+              <li>High-resolution scanning with advanced OCR technology.</li>
+              <li>Manual annotation and verification for 100% accuracy.</li>
+              <li>Conversion to your preferred digital format (JSON, CSV, XML, etc.).</li>
+              <li>Integration support for your existing systems.</li>
+            </ul>
+          </p>
+          <p>
+            Reduce your operational costs and improve data accessibility by letting us handle your physical document conversion.
+          </p>
+        </>
+      ),
+    },
+    {
+      id: "virtual",
+      title: "Virtual Extraction",
+      icon: <HardDrive strokeWidth={1.5} size={50} />,
+      summary: "Operating in the cloud? Send us your digital files and we'll extract, structure, and convert them into AI-ready data for immediate business integration.",
+      detailedDescription: (
+        <>
+          <p>
+            Our Virtual Extraction service is tailored for the modern, digital-first enterprise. 
+            We specialize in transforming unstructured digital files into high-value, structured datasets.
+          </p>
+          <p>
+            Key features of our virtual workflow:
+            <ul>
+              <li>Support for all major digital formats (PDF, TIFF, JPEG, etc.).</li>
+              <li>High-speed automated processing combined with human-in-the-loop verification.</li>
+              <li>Seamless API integration or batch delivery via secure cloud storage.</li>
+              <li>Custom schema mapping to match your specific database requirements.</li>
+              <li>Scalable infrastructure to handle millions of documents per month.</li>
+            </ul>
+          </p>
+          <p>
+            Turn your digital backlog into a strategic asset with our industry-leading extraction technology.
+          </p>
+        </>
+      ),
+    },
+  ];
   const ctaRef = useScrollAnimation();
   const footerRef = useScrollAnimation();
 
@@ -149,67 +207,45 @@ function Home() {
         </div>
       </section>
 
-      {/* Partners Section */}
-      <section className="partners" ref={partnersRef}>
-        <div className="container-full">
-          <h2 className="page-title">Trusted by Industry Leaders</h2>
-          <div className="partners-scroll">
-            <div className="partners-track">
-              <div className="partner-logo">🏢 TechCorp</div>
-              <div className="partner-logo">🏛️ FinanceHub</div>
-              <div className="partner-logo">🏥 HealthCare Plus</div>
-              <div className="partner-logo">📚 EduVision</div>
-              <div className="partner-logo">🛒 RetailGlobal</div>
-              <div className="partner-logo">⚖️ LegalFirst</div>
-              <div className="partner-logo">🏭 Manufacturing Co</div>
-              <div className="partner-logo">🚗 AutoMotion</div>
-
-              <div className="partner-logo">🏢 TechCorp</div>
-              <div className="partner-logo">🏛️ FinanceHub</div>
-              <div className="partner-logo">🏥 HealthCare Plus</div>
-              <div className="partner-logo">📚 EduVision</div>
-              <div className="partner-logo">🛒 RetailGlobal</div>
-              <div className="partner-logo">⚖️ LegalFirst</div>
-              <div className="partner-logo">🏭 Manufacturing Co</div>
-              <div className="partner-logo">🚗 AutoMotion</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Services Section */}
       <section className="services" id="services" ref={servicesRef}>
         <div className="container-full">
           <h2 className="page-title">Services We Offer</h2>
-          <div className="services-grid">
-            <div onClick={() => navigate("/services")} className="service-card">
-              <div className="service-icon">
-                <Layers strokeWidth={1.5} size={50} />
-              </div>
-              <h3>Physical Extraction</h3>
-              <p>
-                Trust us with your physical documents and we will handle the
-                rest. We'll receive, scan, extract, and convert them to the
-                exact format your business needs.
-              </p>
-              <p>
-                <span className="info">click to learn more</span>
-              </p>
-            </div>
-            <div onClick={() => navigate("/services")} className="service-card">
-              <div className="service-icon">
-                <HardDrive strokeWidth={1.5} size={50} />
-              </div>
-              <h3>Digital Extraction</h3>
-              <p>
-                Already have digital documents? Great, send us a copy and we'll
-                extract and convert them to be ready for you to integrate to
-                your business.
-              </p>
-              <p>
-                <span className="info">click to learn more</span>
-              </p>
-            </div>
+
+          <div className="services-grid-container">
+            {serviceDetails.map((service) => {
+              const isSelected = selectedServiceId === service.id;
+              return (
+                <div
+                  key={service.id}
+                  onClick={() => setSelectedServiceId(service.id)}
+                  className={isSelected ? "service-detail-card-expanded" : "service-card"}
+                >
+                  {isSelected ? (
+                    // Expanded Panel (Detailed)
+                    <>
+                      <div className="service-detail-header">
+                        <div className="service-icon">{service.icon}</div>
+                        <h2>{service.title}</h2>
+                      </div>
+                      <div className="service-detail-description">
+                        {service.detailedDescription}
+                      </div>
+                    </>
+                  ) : (
+                    // Small Panel (Summary)
+                    <>
+                      <div className="service-icon">{service.icon}</div>
+                      <h3>{service.title}</h3>
+                      <p>{service.summary}</p>
+                      <p>
+                        <span className="info">Click to learn more</span>
+                      </p>
+                    </>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

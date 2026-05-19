@@ -464,7 +464,7 @@ header {
 
 .process h2 {
   text-align: center;
-  margin-bottom: 0;
+  margin-bottom: var(--spacing-);
 }
 
 .storyboard-container {
@@ -657,15 +657,19 @@ header {
   padding: 0 var(--spacing-lg);
 }
 
-.services-grid {
+.services-grid-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: var(--spacing-2xl);
+  align-items: stretch;
 }
 
 .service-card {
-  padding: var(--spacing-2xl);
+  flex: 0 1 300px;
+  min-width: 250px;
+  max-width: 320px;
+  padding: var(--spacing-lg);
   background-color: var(--bg-primary);
   border-radius: var(--radius-lg);
   border: 2px solid var(--border-color);
@@ -673,8 +677,18 @@ header {
   transition: var(--transition);
   display: flex;
   flex-direction: column;
-  max-width: 500px;
+  height: fit-content;
   cursor: pointer;
+}
+
+.service-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.service-card p {
+  font-size: 0.85rem;
+  line-height: 1.5;
 }
 
 .info {
@@ -694,6 +708,51 @@ header {
   align-items: center;
   justify-content: center;
   color: var(--accent-color);
+}
+
+.service-detail-card-expanded {
+  flex: 2;
+  min-width: 400px;
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--accent-color);
+  text-align: left;
+  cursor: default;
+  padding: var(--spacing-2xl);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.service-detail-card-expanded .service-detail-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.service-detail-card-expanded .service-detail-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+}
+
+.service-detail-card-expanded .service-detail-description p {
+  font-size: 0.95rem;
+  margin-bottom: var(--spacing-md);
+  line-height: 1.7;
+}
+
+.service-detail-card-expanded .service-detail-description ul {
+  list-style: disc;
+  margin-left: var(--spacing-2xl);
+  margin-bottom: var(--spacing-md);
+}
+
+.service-detail-card-expanded .service-detail-description li {
+  font-size: 0.95rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-secondary);
 }
 
 .service-card > p {
@@ -1553,6 +1612,25 @@ footer {
   color: var(--text-primary);
 }
 
+.mantine-Accordion-item[data-active] {
+  background-color: color-mix(in srgb, var(--accent-color), white 92%) !important;
+  border-color: var(--accent-color);
+}
+
+.mantine-Accordion-item[data-active] .mantine-Accordion-control {
+  background-color: var(--accent-color) !important;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+
+.mantine-Accordion-item[data-active] .mantine-Accordion-label,
+.mantine-Accordion-item[data-active] .mantine-Accordion-chevron {
+  color: #ffffff !important;
+}
+
+.mantine-Accordion-item[data-active] .mantine-Accordion-panel {
+  color: var(--text-primary) !important;
+}
 /* ===== Responsive Design ===== */
 @media (max-width: 768px) {
   h1 {
