@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import { Accordion, Container } from "@mantine/core";
+import { Button, Group, Paper, SimpleGrid, Text, Textarea, TextInput } from '@mantine/core';
+import bg from '../assets/bg.svg';
+import { ContactIconsList } from '../components/ContactIcons';
+import classes from '../components/GetInTouch.module.css';
 import {
   Phone,
   FileText,
@@ -15,6 +20,7 @@ import {
 
 function Home() {
   const [theme, setTheme] = useState("light");
+  const [activeStep, setActiveStep] = useState(0);
   const navigate = useNavigate();
 
   // Scroll animation refs for each section
@@ -24,8 +30,42 @@ function Home() {
   const metricsRef = useScrollAnimation();
   const processRef = useScrollAnimation();
   const competitorRef = useScrollAnimation();
+  const statsRef = useScrollAnimation();
+  const contactRef = useScrollAnimation();
   const ctaRef = useScrollAnimation();
   const footerRef = useScrollAnimation();
+
+  // Process steps data
+  const processSteps = [
+    {
+      id: 0,
+      title: "Initial Meeting",
+      icon: <Phone strokeWidth={1.5} size={40} />,
+      description:
+        "We understand your unique document translation needs and business requirements during our consultation.",
+    },
+    {
+      id: 1,
+      title: "Cost & Timeline",
+      icon: <DollarSign strokeWidth={1.5} size={40} />,
+      description:
+        "Receive a detailed cost estimate and project timeline based on your document volume and complexity.",
+    },
+    {
+      id: 2,
+      title: "Extraction",
+      icon: <Cog strokeWidth={1.5} size={40} />,
+      description:
+        "We extract and process your documents using a hybrid of OCR and manual annotation to ensure 100% accuracy.",
+    },
+    {
+      id: 3,
+      title: "Delivery",
+      icon: <Send strokeWidth={1.5} size={40} />,
+      description:
+        "Receive your documents in the format you requested, ready for integration.",
+    },
+  ];
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") || "light";
@@ -44,7 +84,7 @@ function Home() {
     <div className="app">
       {/* Header & Navigation */}
       <header>
-        <div className="container-full">
+        <div className="container">
           <nav className="navbar">
             <div className="nav-title">
               <div className="logo">HextractDocs</div>
@@ -61,15 +101,15 @@ function Home() {
                   <a href="#pricing">Metrics</a>
                 </li>
                 <li>
+                  <a href="#contact">Contact</a>
+                </li>
+                <li>
                   <button
                     className="nav-link-btn"
                     onClick={() => navigate("/about")}
                   >
                     About
                   </button>
-                </li>
-                <li>
-                  <a href="#footer">Contact</a>
                 </li>
               </ul>
               {/* <button className="theme-toggle" onClick={toggleTheme}>
@@ -92,23 +132,18 @@ function Home() {
 
       {/* Hero Section */}
       <section className="hero" ref={heroRef}>
-        <div className="container-full">
-          <div className="hero-content">
-            <h1 className="hero-title">
-              Document extraction that works 100% of the time
-            </h1>
-            <div className="demo-video-container">
-              <div className="demo-video">
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src="https://www.youtube.com/embed/4SCjXcBeW1E?autoplay=1&mute=0"
-                  title="HextractDocs Demo"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
+        <div className="hero-content">
+          <div className="demo-video-container">
+            <div className="demo-video">
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/4SCjXcBeW1E?autoplay=1&mute=0"
+                title="HextractDocs Demo"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
             </div>
           </div>
         </div>
@@ -157,7 +192,9 @@ function Home() {
                 rest. We'll receive, scan, extract, and convert them to the
                 exact format your business needs.
               </p>
-              <p><span className="info">click to learn more</span></p>
+              <p>
+                <span className="info">click to learn more</span>
+              </p>
             </div>
             <div onClick={() => navigate("/services")} className="service-card">
               <div className="service-icon">
@@ -169,7 +206,9 @@ function Home() {
                 extract and convert them to be ready for you to integrate to
                 your business.
               </p>
-              <p><span className="info">click to learn more</span></p>
+              <p>
+                <span className="info">click to learn more</span>
+              </p>
             </div>
           </div>
         </div>
@@ -208,61 +247,50 @@ function Home() {
       {/* Agreement Process Section */}
       <section className="process" id="features" ref={processRef}>
         <div className="container-full">
-          <h2>Our Agreement Process</h2>
-          <div className="timeline-container">
-            <div className="timeline">
-              <div className="timeline-step timeline-left">
-                <div className="timeline-content">
-                  <div className="step-icon">
-                    <Phone strokeWidth={1.5} size={40} />
+          <h2 className="page-title">Our Agreement Process</h2>
+          
+          {/* Storyboard Container */}
+          <div className="storyboard-container">
+            {/* Main Panel Display Area */}
+            <div className="storyboard-panels">
+              <div className="panels-wrapper">
+                {processSteps.map((step, index) => (
+                  <div
+                    key={step.id}
+                    className={`storyboard-panel ${
+                      index === activeStep ? "active" : ""
+                    } ${index > activeStep ? "next" : ""}`}
+                  >
+                    <div className="panel-content">
+                      <div className="panel-icon">{step.icon}</div>
+                      <h3>{step.title}</h3>
+                      <p>{step.description}</p>
+                    </div>
                   </div>
-                  <h3>Initial Meeting</h3>
-                  <p>
-                    We understand your unique document translation needs and
-                    business requirements during our consultation.
-                  </p>
-                </div>
-                <div className="timeline-marker">1</div>
+                ))}
               </div>
-              <div className="timeline-step timeline-right">
-                <div className="timeline-content">
-                  <div className="step-icon">
-                    <DollarSign strokeWidth={1.5} size={40} />
-                  </div>
-                  <h3>Cost & Timeline</h3>
-                  <p>
-                    Receive a detailed cost estimate and project timeline based
-                    on your document volume and complexity.
-                  </p>
-                </div>
-                <div className="timeline-marker">3</div>
-              </div>
-              <div className="timeline-step timeline-left">
-                <div className="timeline-marker">4</div>
-                <div className="timeline-content">
-                  <div className="step-icon">
-                    <Cog strokeWidth={1.5} size={40} />
-                  </div>
-                  <h3>Extraction</h3>
-                  <p>
-                    We extract and process your documents using a hybrid of OCR
-                    and manual annotation to ensure 100% accuracy.
-                  </p>
-                </div>
-              </div>
-              <div className="timeline-step timeline-right">
-                <div className="timeline-content">
-                  <div className="step-icon">
-                    <Send strokeWidth={1.5} size={40} />
-                  </div>
-                  <h3>Delivery</h3>
-                  <p>
-                    Receive your documents in the format you requested, ready
-                    for integration.
-                  </p>
-                </div>
-                <div className="timeline-marker">5</div>
-              </div>
+            </div>
+
+            {/* Step Indicators */}
+            <div 
+              className="storyboard-steps"
+              style={{
+                '--progress-width': `calc(${activeStep} * (140px + var(--spacing-lg)))`,
+                '--progress-left': '70px',
+              }}
+            >
+              {processSteps.map((step, index) => (
+                <button
+                  key={step.id}
+                  className={`step-indicator ${
+                    index === activeStep ? "active" : ""
+                  }`}
+                  onClick={() => setActiveStep(index)}
+                >
+                  <span className="step-number">{index + 1}</span>
+                  <span className="step-label">{step.title}</span>
+                </button>
+              ))}
             </div>
           </div>
         </div>
@@ -272,9 +300,6 @@ function Home() {
       <section className="competitor-analysis" ref={competitorRef}>
         <div className="container-full">
           <h2 className="page-title">Why Choose HextractDocs?</h2>
-          <p className="section-subtitle">
-            Compare us with other document extraction services
-          </p>
           <div className="comparison-table">
             <div className="comparison-header">
               <div className="feature-col">
@@ -383,9 +408,9 @@ function Home() {
               </div>
             </div>
           </div>
-        </div>  
+        </div>
       </section>
-
+      
       {/* CTA Section */}
       <section className="cta" ref={ctaRef}>
         <div className="container-full">
@@ -397,10 +422,98 @@ function Home() {
           <button className="button">Schedule Your Meeting</button>
         </div>
       </section>
+      
+      {/* Contact Us Section */}
+      <section className="page-section" id="contact" ref={contactRef}>
+        <div className="container-full">
+          <Paper shadow="md" radius="lg">
+            <div className={classes.wrapper}>
+              <div className={classes.contacts} style={{ backgroundImage: `url(${bg})` }}>
+                <Text fz="lg" fw={700} className={classes.title} c="#fff">
+                  Contact information
+                </Text>
+                <ContactIconsList />
+              </div>
+
+              <form className={classes.form} onSubmit={(event) => event.preventDefault()}>
+                <Text fz="lg" fw={700} className={classes.title}>
+                  Send us a Message
+                </Text>
+
+                <div className={classes.fields}>
+                  <SimpleGrid cols={{ base: 1, sm: 2 }}>
+                    <TextInput label="Your name" placeholder="Your name" />
+                    <TextInput label="Your email" placeholder="hello@mantine.dev" required />
+                  </SimpleGrid>
+
+                  <TextInput mt="md" label="Subject" placeholder="Subject" required />
+
+                  <Textarea
+                    mt="md"
+                    label="Your message"
+                    placeholder="Please include all relevant information"
+                    minRows={3}
+                  />
+
+                  <Group justify="flex-end" mt="md">
+                    <Button type="submit" className={classes.control}>
+                      Send message
+                    </Button>
+                  </Group>
+                </div>
+              </form>
+            </div>
+          </Paper>
+          </div>
+      </section>
+      
+      {/* FAQ Section */}
+      <section
+        className="page-section"
+        ref={statsRef} /* Assuming statsRef is intended for the FAQ section */
+        style={{ backgroundColor: "var(--bg-secondary)" }}
+      >
+        <div className="container-full">
+          <Container size="sm">
+            <h2 className="page-title" style={{ textAlign: 'center', marginBottom: 'var(--spacing-xl)' }}>
+              Frequently Asked Questions
+            </h2>
+
+            <Accordion variant="separated" defaultValue="accuracy">
+              <Accordion.Item value="accuracy">
+                <Accordion.Control>How do you achieve 100% accuracy?</Accordion.Control>
+                <Accordion.Panel>
+                  We utilize a unique hybrid model. While we use advanced OCR to handle heavy lifting, 
+                  every critical data point is passed through our manual verification layer where trained 
+                  experts audit the extraction to ensure zero errors.
+                </Accordion.Panel>
+              </Accordion.Item>
+
+              <Accordion.Item value="security">
+                <Accordion.Control>Is my sensitive data shared with AI models?</Accordion.Control>
+                <Accordion.Panel>
+                  No. Unlike standard cloud services that feed user data into external LLMs for training, 
+                  HextractDocs maintains a secure, closed loop. We provide absolute transparency into our 
+                  processing architecture to ensure your privacy.
+                </Accordion.Panel>
+              </Accordion.Item>
+
+              <Accordion.Item value="integration">
+                <Accordion.Control>Can you integrate with my existing CRM/ERP?</Accordion.Control>
+                <Accordion.Panel>
+                  Yes. We deliver data in standardized formats (JSON, CSV, XML) ready for immediate import 
+                  into any CRM or custom database. We can also tailor formatting to match your specific API needs.
+                </Accordion.Panel>
+              </Accordion.Item>
+            </Accordion>
+          </Container>
+        </div>
+      </section>
+
 
       {/* Footer */}
       <footer id="footer" ref={footerRef}>
-        <div className="container-full">
+        <div className="container">
           <div className="footer-content">
             <div className="footer-section">
               <h4>Product</h4>

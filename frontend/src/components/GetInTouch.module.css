@@ -1,0 +1,63 @@
+/* c:\Users\ron\sentri\hextractdocs\frontend\src\components\GetInTouch.module.css */
+.wrapper {
+  display: flex;
+  background-color: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.contacts {
+  flex: 0 0 280px;
+  background-color: var(--accent-color);
+  color: white;
+  padding: var(--spacing-3xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-size: cover;
+  background-position: center;
+}
+
+.title {
+  color: var(--text-primary); /* This will be overridden by c="#fff" in JSX for the contacts section */
+  margin-bottom: var(--spacing-lg);
+}
+
+.form {
+  flex: 1;
+  padding: var(--spacing-3xl);
+  background-color: var(--bg-secondary);
+}
+
+.fields {
+  margin-top: var(--spacing-md);
+}
+
+.control {
+  background-color: var(--accent-color);
+  color: white;
+  transition: var(--transition);
+}
+
+.control:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .contacts {
+    flex: none;
+    width: 100%;
+    padding: var(--spacing-xl);
+  }
+
+  .form {
+    padding: var(--spacing-xl);
+  }
+}
