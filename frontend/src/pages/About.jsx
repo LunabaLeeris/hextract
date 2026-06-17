@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
-import { ArrowLeft, Users, Target, Heart, Zap } from "lucide-react";
-import { Container, px, SimpleGrid, Stack, useMantineTheme } from '@mantine/core';
+import { ArrowLeft, Users, Target, Heart, Zap, CheckCircle2 } from "lucide-react";
 
 function About() {
   const navigate = useNavigate();
@@ -12,61 +11,51 @@ function About() {
     {
       title: "Over-reliance on OCR",
       shortDesc: "Moving beyond pure machine extraction for reliability.",
-      content: "Competitors rely exclusively on Optical Character Recognition (OCR) for data extraction; when OCR fails, data integrity is compromised. Hextract Docs mitigates this via a hybrid model. By integrating human oversight, an advanced annotation system, and diverse OCR methodologies, we deploy trained annotators to guarantee maximum data accuracy."
+      content: "Competitors rely exclusively on Optical Character Recognition (OCR) for data extraction; when OCR fails, data integrity is compromised. HextractDocs mitigates this via a hybrid model. By integrating human oversight, an advanced annotation system, and diverse OCR methodologies, we deploy trained annotators to guarantee maximum data accuracy."
     },
     {
       title: "Operational Inflexibility",
       shortDesc: "Dedicated service tailored to your exact pipeline.",
-      content: "Competitors license rigid software products. Hextract Docs provides a dedicated service. Through continuous collaborative support, we tailor the extraction pipeline to meet exactly what our clients need."
+      content: "Competitors license rigid software products. HextractDocs provides a dedicated service. Through continuous collaborative support, we tailor the extraction pipeline to meet exactly what our clients need."
     },
     {
-      title: "Physical Document Processing",
+      title: "Physical Document Ingestion",
       shortDesc: "Complete management of your physical archive.",
       content: "For local businesses, we manage the entire lifecycle of physical documents—including scanning, storage, and secure data transfer—allowing clients to focus more on their products."
     },
     {
       title: "Opaque Data Security",
       shortDesc: "Absolute transparency and security warranties.",
-      content: "Standard services require off-site document uploads, obscuring storage, processing, and utilization protocols (often exposing sensitive data to external LLMs). Hextract Docs operates with absolute transparency. We provide complete visibility into our data storage, processing architecture, and annotation protocols, backed by comprehensive service warranties."
+      content: "Standard services require off-site document uploads, obscuring storage, processing, and utilization protocols (often exposing sensitive data to external LLMs). HextractDocs operates with absolute transparency. We provide complete visibility into our data storage, processing architecture, and annotation protocols, backed by comprehensive service warranties."
     }
   ];
 
-  const theme = useMantineTheme();
-  const BASE_HEIGHT = 480;
-  const spacing = px(theme.spacing.md);
-  
-  const getSubHeight = (children, spacingValue) =>
-    BASE_HEIGHT / children - spacingValue * ((children - 1) / children);
-
-  const renderReasonContent = (title, desc, iconNumber, isSmall = false) => (
-    <div className={`reason-card-inner ${isSmall ? 'small-card' : ''}`}>
-      {iconNumber && <div className="reason-number">{iconNumber}</div>}
-      <h3 className={isSmall ? 'small-card-title' : ''}>{title}</h3>
-      <p className={isSmall ? 'small-card-text' : ''}>{desc}</p>
-    </div>
-  );
-
-  // Scroll animation refs for each section
+  // Scroll animation refs
   const storyRef = useScrollAnimation();
-  const missionRef = useScrollAnimation();
   const valueRef = useScrollAnimation();
+  const missionRef = useScrollAnimation();
   const reasonsRef = useScrollAnimation();
   const ctaRef = useScrollAnimation();
+  const footerRef = useScrollAnimation();
 
   return (
     <div className="app">
       {/* Header */}
       <header>
         <div className="container">
-          <nav className="navbar">
-            <div className="logo">HextractDocs</div>
+          <nav className="navbar" role="navigation" aria-label="Main Navigation">
+            <div className="logo" onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
+              <CheckCircle2 size={24} style={{ color: "var(--accent-color)" }} />
+              <span>HextractDocs</span>
+            </div>
             <ul className="nav-links">
               <li>
                 <button 
                   className="nav-back-btn" 
                   onClick={() => navigate("/")}
+                  aria-label="Back to home page"
                 >
-                  <ArrowLeft size={20} /> Back
+                  <ArrowLeft size={16} /> Back
                 </button>
               </li>
             </ul>
@@ -75,53 +64,59 @@ function About() {
       </header>
 
       {/* About Hero Section */}
-      <section className="about-hero" ref={storyRef}>
-        <div className="container-full">
-          <div className="about-hero-left">
-            <span className="breadcrumbs">Home / <span className="breadcrumbs-highlight">About</span></span>
-            <h2 className="text-header-highlight ">So You Can Worry About Your Products</h2>
-            <p>
-              HextractDocs was founded with a simple mission: to eliminate the tedious, error-prone process of manual document entry. We realized that thousands of businesses spend countless hours converting physical and digital documents into formats their systems can understand.
-            </p>
-            <p>
-              What started as a small team of document processing experts has grown into an industry leader, trusted by over 500 companies to handle millions of documents. We combine cutting-edge OCR technology with human expertise to deliver unmatched accuracy and reliability.
-            </p>
-          </div>
-          <div className="about-hero-right">
-            <div className="page-hero">
-              <h3>About HextractDocs</h3>
+      <section className="about-header-section scroll-animate" ref={storyRef}>
+        <div className="container">
+          <div className="about-header-grid">
+            <div className="about-header-left">
+              <span className="breadcrumbs" style={{ fontSize: "0.8rem", color: "var(--text-secondary)" }}>
+                Home / <span className="breadcrumbs-highlight" style={{ color: "var(--accent-color)", fontWeight: 500 }}>About</span>
+              </span>
+              <h1 style={{ marginTop: "8px" }}>Focus on Your Products, We'll Handle the Data.</h1>
               <p>
-                Transforming how businesses handle documents through intelligent extraction and AI-ready formatting
+                HextractDocs was founded with a simple mission: to eliminate the tedious, error-prone process of manual document entry. We realized that thousands of businesses spend countless hours converting physical and digital documents into formats their systems can understand.
               </p>
+              <p>
+                What started as a small team of document processing experts has grown into an industry leader, trusted by over 500 companies to handle millions of documents. We combine cutting-edge OCR technology with human expertise to deliver unmatched accuracy and reliability.
+              </p>
+            </div>
+            <div className="about-header-right">
+              <div className="about-feature-box">
+                <h3>About HextractDocs</h3>
+                <p>
+                  Transforming how businesses handle documents through intelligent extraction and AI-ready formatting.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
       
       {/* Value Section */}
-      <section className="page-section" ref={valueRef}>
-        <div className="container-full">
-          <h2 className="text-header-highlight">What do we solve?</h2>
-          <p>
-            Hextract Docs exists to transform digital and physical documents into the precise machine-readable formats required by client systems. We resolve the following industry limitations:
+      <section className="page-section scroll-animate" ref={valueRef}>
+        <div className="container">
+          <h2 style={{ textAlign: "center", marginBottom: "var(--spacing-md)" }}>What Do We Solve?</h2>
+          <p style={{ textAlign: "center", maxWidth: "650px", margin: "0 auto var(--spacing-xl) auto" }}>
+            HextractDocs exists to transform digital and physical documents into the precise machine-readable formats required by client systems. We resolve the following industry limitations:
           </p>
           
-          <div className="value-switcher">
-            <div className="value-nav">
+          <div className="solving-switcher">
+            <div className="solving-nav">
               {differentiationValues.map((val, index) => (
-                <div 
+                <button 
                   key={index}
-                  className={`value-nav-item ${activeValue === index ? 'active' : ''}`}
+                  className={`solving-nav-item ${activeValue === index ? 'active' : ''}`}
                   onClick={() => setActiveValue(index)}
+                  role="tab"
+                  aria-selected={activeValue === index}
                 >
-                  <h3>{val.title}</h3>
+                  <h4>{val.title}</h4>
                   <p>{val.shortDesc}</p>
-                </div>
+                </button>
               ))}
             </div>
             
-            <div className="value-content" key={activeValue}>
-              <h2>{differentiationValues[activeValue].title}</h2>
+            <div className="solving-panel-content" key={activeValue}>
+              <h3>{differentiationValues[activeValue].title}</h3>
               <p>{differentiationValues[activeValue].content}</p>
             </div>
           </div>
@@ -129,25 +124,25 @@ function About() {
       </section>
       
       {/* Our Mission Section */}
-      <section className="page-section" ref={missionRef}>
-        <div className="container-full">
-          <div className="mission-grid">
-            <div className="mission-card">
-              <Target strokeWidth={1.5} size={40} />
+      <section className="page-section scroll-animate" ref={missionRef} style={{ background: "var(--bg-secondary)" }}>
+        <div className="container">
+          <div className="core-values-grid">
+            <div className="value-card-flat">
+              <Target strokeWidth={1.5} size={32} aria-hidden="true" />
               <h3>Our Mission</h3>
               <p>
                 To empower businesses by automating document extraction and freeing teams to focus on what truly matters—growing their business.
               </p>
             </div>
-            <div className="mission-card">
-              <Zap strokeWidth={1.5} size={40} />
+            <div className="value-card-flat">
+              <Zap strokeWidth={1.5} size={32} aria-hidden="true" />
               <h3>Our Vision</h3>
               <p>
                 A world where no business wastes time on manual data entry, and every document is instantly ready for AI integration.
               </p>
             </div>
-            <div className="mission-card">
-              <Users strokeWidth={1.5} size={40} />
+            <div className="value-card-flat">
+              <Users strokeWidth={1.5} size={32} aria-hidden="true" />
               <h3>Our Commitment</h3>
               <p>
                 24/7 support, continuous innovation, and a 100% accuracy guarantee on every document we process.
@@ -157,98 +152,110 @@ function About() {
         </div>
       </section>
 
-
       {/* Why Choose Us Section */}
-      <section className="page-section" ref={reasonsRef}>
-        <div className="container-full">
-          <h2 className="text-header-highlight">Why Choose HextractDocs?</h2>
-          <p>
-            We are not just a service provider—we are your partner in transforming how you handle documents.
-          </p>  
+      <section className="page-section scroll-animate" ref={reasonsRef}>
+        <div className="container">
+          <div className="section-header-center">
+            <h2>Why Choose HextractDocs?</h2>
+            <p>We are not just a service provider—we are your partner in transforming how you handle documents.</p>
+          </div>
           
-          <Container my="md" size="100%" p={0}>
-            <SimpleGrid cols={{ base: 1, sm: 2, md: 4 }} spacing="md">
-              {/* Column 1: Full Height */}
-              <div className="reason-card" style={{ height: BASE_HEIGHT }}>
-                {renderReasonContent("100% Accuracy Guarantee", "Every document is verified by human experts to ensure zero errors", 1)}
+          <div className="reasons-layout">
+            {/* Column 1: Full Height */}
+            <div className="reason-box-full">
+              <div>
+                <span className="reason-number" style={{ display: "block" }}>01</span>
+                <h3 style={{ fontSize: "1.25rem", margin: "12px 0 8px" }}>100% Accuracy Guarantee</h3>
               </div>
+              <p>Every single document field is verified by human experts to ensure zero errors in production delivery.</p>
+            </div>
 
-              {/* Column 2: Stack of 2 */}
-              <Stack spacing="md">
-                <div className="reason-card" style={{ height: getSubHeight(2, spacing) }}>
-                  {renderReasonContent("Hybrid Tech", "Advanced OCR + Human annotation", 2)}
-                </div>
-                <div className="reason-card" style={{ height: getSubHeight(2, spacing) }}>
-                  {renderReasonContent("AI-Ready", "Precise data formatting for your AI needs", 3)}
-                </div>
-              </Stack>
-
-              {/* Column 3: Stack of 3 */}
-              <Stack spacing="md">
-                <div className="reason-card" style={{ height: getSubHeight(3, spacing) }}>
-                  {renderReasonContent("24/7 Support", "Always here to help you", null, true)}
-                </div>
-                <div className="reason-card" style={{ height: getSubHeight(3, spacing) }}>
-                  {renderReasonContent("Physical", "Handling your physical archives", null, true)}
-                </div>
-                <div className="reason-card" style={{ height: getSubHeight(3, spacing) }}>
-                  {renderReasonContent("Pricing", "Flexible volume-based rates", null, true)}
-                </div>
-              </Stack>
-
-              {/* Column 4: Full Height summary */}
-              <div className="reason-card highlight-card" style={{ height: BASE_HEIGHT, background: 'var(--accent-color)', color: 'white' }}>
-                <Heart size={40} style={{ marginBottom: '1rem', color: 'white' }} />
-                <h3 style={{ color: 'white' }}>Proven and Tested</h3>
-                <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '15px' }}>
-                  Our commitment to precision has made us the preferred partner for document-heavy enterprises globally.
-                </p>
+            {/* Column 2: Stack of 2 */}
+            <div className="reason-box-stack">
+              <div className="reason-box-mini">
+                <h4>02. Hybrid Tech</h4>
+                <p>Advanced OCR algorithms merged seamlessly with human-in-the-loop annotations.</p>
               </div>
-            </SimpleGrid>
-          </Container>
-          
+              <div className="reason-box-mini">
+                <h4>03. AI-Ready Outputs</h4>
+                <p>Precise data formatting ready to feed directly into your custom LLMs or databases.</p>
+              </div>
+            </div>
+
+            {/* Column 3: Stack of 3 */}
+            <div className="reason-box-stack">
+              <div className="reason-box-mini">
+                <h4>24/7 Service</h4>
+                <p>Continuous client support across all operational timezones.</p>
+              </div>
+              <div className="reason-box-mini">
+                <h4>Physical Scanning</h4>
+                <p>Complete handling of legacy paper archives.</p>
+              </div>
+              <div className="reason-box-mini">
+                <h4>Scale-Ready</h4>
+                <p>Flexible volume-based rates matching your load.</p>
+              </div>
+            </div>
+
+            {/* Column 4: Full Height Highlight */}
+            <div className="reason-box-full highlighted-box">
+              <div>
+                <Heart size={32} style={{ marginBottom: "12px" }} aria-hidden="true" />
+                <h3 style={{ fontSize: "1.25rem", margin: "0 0 8px" }}>Proven & Tested</h3>
+              </div>
+              <p>Our commitment to precision has made us the preferred partner for document-heavy enterprises globally.</p>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="about-cta" ref={ctaRef}>
+      <section className="cta-banner scroll-animate" ref={ctaRef}>
         <div className="container">
-          <h2>Let's Transform Your Documents Together</h2>
-          <p>Join hundreds of companies that trust HextractDocs with their document processing</p>
-          <button className="button">Get Started Today</button>
+          <div className="cta-banner-content">
+            <h2>Let's Transform Your Documents Together</h2>
+            <p>Join hundreds of companies that trust HextractDocs with their document processing needs.</p>
+            <button className="button" onClick={() => navigate("/")}>Get Started Today</button>
+          </div>
         </div>  
       </section>
 
       {/* Footer */}
-      <footer>
+      <footer ref={footerRef}>
         <div className="container">
-          <div className="footer-content">
-            <div className="footer-section">
-              <h4>Product</h4>
+          <div className="footer-grid">
+            <div className="footer-brand">
+              <h4>HextractDocs</h4>
+              <p>Grounded document annotation services combining deep OCR automation with expert human review.</p>
+            </div>
+            
+            <div className="footer-col">
+              <h5>Product</h5>
               <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/services">Services</a></li>
                 <li><a href="/about">About</a></li>
               </ul>
             </div>
-            <div className="footer-section">
-              <h4>Company</h4>
+            <div className="footer-col">
+              <h5>Company</h5>
               <ul>
                 <li><a href="/about">About Us</a></li>
                 <li><a href="#">Blog</a></li>
                 <li><a href="#">Careers</a></li>
               </ul>
             </div>
-            <div className="footer-section">
-              <h4>Resources</h4>
+            <div className="footer-col">
+              <h5>Resources</h5>
               <ul>
                 <li><a href="#">Documentation</a></li>
-                <li><a href="#">API Reference</a></li>
+                <li><a href="#">API Specs</a></li>
                 <li><a href="#">Support</a></li>
               </ul>
             </div>
-            <div className="footer-section">
-              <h4>Legal</h4>
+            <div className="footer-col">
+              <h5>Legal</h5>
               <ul>
                 <li><a href="#">Privacy Policy</a></li>
                 <li><a href="#">Terms of Service</a></li>
