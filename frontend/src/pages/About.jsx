@@ -11,12 +11,12 @@ function About() {
     {
       title: "Over-reliance on OCR",
       shortDesc: "Moving beyond pure machine extraction for reliability.",
-      content: "Competitors rely exclusively on Optical Character Recognition (OCR) for data extraction; when OCR fails, data integrity is compromised. HextractDocs mitigates this via a hybrid model. By integrating human oversight, an advanced annotation system, and diverse OCR methodologies, we deploy trained annotators to guarantee maximum data accuracy."
+      content: "Competitors rely exclusively on Optical Character Recognition (OCR) for data extraction; when OCR fails, data integrity is compromised. Trommel mitigates this via a hybrid sifting model. By integrating human oversight, an advanced annotation system, and diverse OCR methodologies, we deploy trained annotators to guarantee maximum data accuracy."
     },
     {
       title: "Operational Inflexibility",
       shortDesc: "Dedicated service tailored to your exact pipeline.",
-      content: "Competitors license rigid software products. HextractDocs provides a dedicated service. Through continuous collaborative support, we tailor the extraction pipeline to meet exactly what our clients need."
+      content: "Competitors license rigid software products. Trommel provides a dedicated service. Through continuous collaborative support, we tailor the extraction pipeline to meet exactly what our clients need."
     },
     {
       title: "Physical Document Ingestion",
@@ -26,7 +26,7 @@ function About() {
     {
       title: "Opaque Data Security",
       shortDesc: "Absolute transparency and security warranties.",
-      content: "Standard services require off-site document uploads, obscuring storage, processing, and utilization protocols (often exposing sensitive data to external LLMs). HextractDocs operates with absolute transparency. We provide complete visibility into our data storage, processing architecture, and annotation protocols, backed by comprehensive service warranties."
+      content: "Standard services require off-site document uploads, obscuring storage, processing, and utilization protocols (often exposing sensitive data to external LLMs). Trommel operates with absolute transparency. We provide complete visibility into our data storage, processing architecture, and annotation protocols, backed by comprehensive service warranties."
     }
   ];
 
@@ -46,7 +46,7 @@ function About() {
           <nav className="navbar" role="navigation" aria-label="Main Navigation">
             <div className="logo" onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
               <CheckCircle2 size={24} style={{ color: "var(--accent-color)" }} />
-              <span>HextractDocs</span>
+              <span>Trommel</span>
             </div>
             <ul className="nav-links">
               <li>
@@ -71,9 +71,9 @@ function About() {
               <span className="breadcrumbs" style={{ fontSize: "0.8rem", color: "var(--text-secondary)" }}>
                 Home / <span className="breadcrumbs-highlight" style={{ color: "var(--accent-color)", fontWeight: 500 }}>About</span>
               </span>
-              <h1 style={{ marginTop: "8px" }}>Focus on Your Products, We'll Handle the Data.</h1>
+              <h1 style={{ marginTop: "8px" }}>Focus on Your Products, We'll Find the Gold.</h1>
               <p>
-                HextractDocs was founded with a simple mission: to eliminate the tedious, error-prone process of manual document entry. We realized that thousands of businesses spend countless hours converting physical and digital documents into formats their systems can understand.
+                Trommel was founded with a simple mission: to act as a high-performance rotary screening system for raw business files, separating valuable structured data from raw noise. We realized that companies spend countless hours trying to extract insights from files manually.
               </p>
               <p>
                 What started as a small team of document processing experts has grown into an industry leader, trusted by over 500 companies to handle millions of documents. We combine cutting-edge OCR technology with human expertise to deliver unmatched accuracy and reliability.
@@ -81,9 +81,9 @@ function About() {
             </div>
             <div className="about-header-right">
               <div className="about-feature-box">
-                <h3>About HextractDocs</h3>
+                <h3>About Trommel</h3>
                 <p>
-                  Transforming how businesses handle documents through intelligent extraction and AI-ready formatting.
+                  Helping businesses get the gold out of their documents through intelligent sifting and AI-ready formatting.
                 </p>
               </div>
             </div>
@@ -96,7 +96,7 @@ function About() {
         <div className="container">
           <h2 style={{ textAlign: "center", marginBottom: "var(--spacing-md)" }}>What Do We Solve?</h2>
           <p style={{ textAlign: "center", maxWidth: "650px", margin: "0 auto var(--spacing-xl) auto" }}>
-            HextractDocs exists to transform digital and physical documents into the precise machine-readable formats required by client systems. We resolve the following industry limitations:
+            Trommel exists to screen digital and physical documents, separating clean structured data from raw inputs. We resolve the following industry limitations:
           </p>
           
           <div className="solving-switcher">
@@ -156,7 +156,7 @@ function About() {
       <section className="page-section scroll-animate" ref={reasonsRef}>
         <div className="container">
           <div className="section-header-center">
-            <h2>Why Choose HextractDocs?</h2>
+            <h2>Why Choose Trommel?</h2>
             <p>We are not just a service provider—we are your partner in transforming how you handle documents.</p>
           </div>
           
@@ -215,7 +215,7 @@ function About() {
         <div className="container">
           <div className="cta-banner-content">
             <h2>Let's Transform Your Documents Together</h2>
-            <p>Join hundreds of companies that trust HextractDocs with their document processing needs.</p>
+            <p>Join hundreds of companies that trust Trommel to extract gold from their raw data files.</p>
             <button className="button" onClick={() => navigate("/")}>Get Started Today</button>
           </div>
         </div>  
@@ -226,8 +226,8 @@ function About() {
         <div className="container">
           <div className="footer-grid">
             <div className="footer-brand">
-              <h4>HextractDocs</h4>
-              <p>Grounded document annotation services combining deep OCR automation with expert human review.</p>
+              <h4>Trommel</h4>
+              <p>Data sifting and refining services combining advanced machine parsing with expert human validation to extract pure gold from raw files.</p>
             </div>
             
             <div className="footer-col">
@@ -264,7 +264,7 @@ function About() {
             </div>
           </div>
           <div className="footer-bottom">
-            <p>&copy; 2026 HextractDocs. All rights reserved.</p>
+            <p>&copy; 2026 Trommel. All rights reserved.</p>
           </div>
         </div>
       </footer>

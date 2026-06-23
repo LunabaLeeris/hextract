@@ -97,7 +97,7 @@ function Home() {
           <nav className="navbar" role="navigation" aria-label="Main Navigation">
             <div className="logo">
               <CheckCircle2 size={24} style={{ color: "var(--accent-color)" }} />
-              <span>HextractDocs</span>
+              <span>Trommel</span>
             </div>
             
             <div className="nav-pages">
@@ -145,11 +145,11 @@ function Home() {
         <div className="container">
           <div className="hero-layout">
             <div className="hero-left">
-              <h1>Document Annotation Grounded in Accuracy.</h1>
+              <h1>Sift the Gold From Your Enterprise Data.</h1>
               <p>
-                A secure, enterprise-grade hybrid platform combining state-of-the-art OCR models with 
-                dedicated human annotators. Extract, structure, and convert physical or digital 
-                records into AI-ready formats with 100% accuracy.
+                Trommel acts as a high-precision rotary screening system for your files. 
+                Combining state-of-the-art extraction engines with expert human validation, 
+                we separate the valuable metrics from raw noise, delivering 100% accurate, AI-ready data.
               </p>
               <div className="hero-actions">
                 <a href="#contact" className="button">
@@ -207,10 +207,10 @@ function Home() {
       <section className="services scroll-animate" id="services" ref={servicesRef}>
         <div className="container">
           <div className="section-header-center">
-            <h2>Our Document Extraction Services</h2>
+            <h2>Our Data Refining Services</h2>
             <p>
-              Whether processing legacy paper archives or ingesting high-volume digital documents in the cloud, 
-              we structure your pipeline to deliver perfectly validated data.
+              Whether you are processing raw legacy paper logs or high-volume digital cloud streams, 
+              we screen, separate, and refine your data to extract the pure gold.
             </p>
           </div>
 
@@ -343,23 +343,23 @@ function Home() {
             </div>
             <div className="timeline-step">
               <div className="timeline-badge">1</div>
-              <h3>Consultation</h3>
-              <p>We analyze your target documents and identify structural complexity.</p>
+              <h3>Analysis</h3>
+              <p>We examine your raw data deposits to identify where the valuable metadata is buried.</p>
             </div>
             <div className="timeline-step">
               <div className="timeline-badge">2</div>
-              <h3>Pilot Study</h3>
-              <p>We configure extraction models and build annotation manuals for verification.</p>
+              <h3>Calibration</h3>
+              <p>We tune our parsing trommels and design precise verification rules to capture target fields.</p>
             </div>
             <div className="timeline-step">
               <div className="timeline-badge">3</div>
-              <h3>Production</h3>
-              <p>Your documents go live in our hybrid pipeline with continuous human oversight.</p>
+              <h3>Sifting</h3>
+              <p>Your files flow through our hybrid screening pipeline with continuous human oversight.</p>
             </div>
             <div className="timeline-step">
               <div className="timeline-badge">4</div>
-              <h3>API Delivery</h3>
-              <p>Clean, structured datasets are delivered straight to your database or system.</p>
+              <h3>Pure Gold</h3>
+              <p>Clean, highly refined structured datasets are delivered directly into your systems.</p>
             </div>
           </div>
         </div>
@@ -369,16 +369,16 @@ function Home() {
       <section className="comparison scroll-animate" id="comparison" ref={competitorRef}>
         <div className="container">
           <div className="section-header-center">
-            <h2>Why Enterprises Trust HextractDocs</h2>
-            <p>Unlike software licenses that hand you raw OCR scripts, we provide a complete, bulletproof data extraction service.</p>
+            <h2>Why Enterprises Trust Trommel</h2>
+            <p>Unlike simple OCR software that hands you raw dirt and noise, we run your data through a multi-stage refining process to deliver only the gold.</p>
           </div>
 
           <div className="comparison-wrapper">
-            <table className="clean-table" aria-label="Feature comparison table between HextractDocs and standard OCR competitors">
+            <table className="clean-table" aria-label="Feature comparison table between Trommel and standard OCR competitors">
               <thead>
                 <tr>
                   <th scope="col">Feature Highlights</th>
-                  <th scope="col">HextractDocs</th>
+                  <th scope="col">Trommel</th>
                   <th scope="col">Standard OCR API</th>
                   <th scope="col">Outsourced BPO</th>
                 </tr>
@@ -424,9 +424,9 @@ function Home() {
       <section className="cta-banner">
         <div className="container">
           <div className="cta-banner-content">
-            <h2>Ready to structure your document flow?</h2>
-            <p>Connect with a solutions engineer today to set up a pilot study with your own document templates.</p>
-            <a href="#contact" className="button">Book a Pilot Consultation</a>
+            <h2>Ready to get the gold out of your data?</h2>
+            <p>Connect with our engineering team today to start sifting value from your documents with a free pilot study.</p>
+            <a href="#contact" className="button">Start Your Pilot Study</a>
           </div>
         </div>
       </section>
@@ -448,7 +448,7 @@ function Home() {
                 </div>
                 <div className="contact-detail-row">
                   <Mail size={18} />
-                  <span>info@hextractdocs.com</span>
+                  <span>info@trommeldata.com</span>
                 </div>
                 <div className="contact-detail-row">
                   <MapPin size={18} />
@@ -522,13 +522,13 @@ function Home() {
 
             <Accordion variant="separated" defaultValue="accuracy">
               <Accordion.Item value="accuracy">
-                <Accordion.Control>How do you guarantee 100% accuracy?</Accordion.Control>
-                <Accordion.Panel>
-                  We utilize a unique hybrid mechanism. Standard OCR models handle fast data reads, 
-                  but every critical data point passes through a secure multi-annotator review layer. 
-                  This human-in-the-loop audit overrides OCR failures and guarantees zero mistakes.
-                </Accordion.Panel>
-              </Accordion.Item>
+                  <Accordion.Control>How do you guarantee 100% accuracy?</Accordion.Control>
+                  <Accordion.Panel>
+                    Like a mining trommel that filters out debris, we run your records through automated 
+                    models first, then pass every target data field through a secure multi-annotator 
+                    review layer. This ensures zero errors slip into your final dataset.
+                  </Accordion.Panel>
+                </Accordion.Item>
 
               <Accordion.Item value="security">
                 <Accordion.Control>How is sensitive data secured?</Accordion.Control>
@@ -556,8 +556,8 @@ function Home() {
         <div className="container">
           <div className="footer-grid">
             <div className="footer-brand">
-              <h4>HextractDocs</h4>
-              <p>Grounded document annotation services combining deep OCR automation with expert human review.</p>
+              <h4>Trommel</h4>
+              <p>Data sifting and refining services combining advanced machine parsing with expert human validation to extract pure gold from raw files.</p>
             </div>
             
             <div className="footer-col">
@@ -602,7 +602,7 @@ function Home() {
           </div>
 
           <div className="footer-bottom">
-            <p>&copy; 2026 HextractDocs. All rights reserved. Transforming Documents, Enabling AI.</p>
+            <p>&copy; 2026 Trommel. All rights reserved. Sifting Data, Delivering Gold.</p>
             <div>
               <a href="#" style={{ fontSize: "0.8rem", color: "var(--text-secondary)" }}>Privacy Control</a>
             </div>

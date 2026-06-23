@@ -50,7 +50,7 @@ const DocumentPlayground = () => {
           <div className="document-logo-placeholder">INVOICE</div>
           <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.8rem", color: "var(--text-secondary)" }}>
             <div>
-              <strong>HextractDocs Ltd.</strong>
+              <strong>Trommel Data Corp.</strong>
               <div style={{ fontSize: "0.75rem", color: "var(--text-secondary)", marginTop: "4px" }}>
                 Tech District, NY
               </div>

@@ -12,7 +12,7 @@ function Services() {
           <nav className="navbar" role="navigation" aria-label="Main Navigation">
             <div className="logo" onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
               <CheckCircle2 size={24} style={{ color: "var(--accent-color)" }} />
-              <span>HextractDocs</span>
+              <span>Trommel</span>
             </div>
             <ul className="nav-links">
               <li>
@@ -35,7 +35,7 @@ function Services() {
           <div className="section-header-center">
             <h1>Our Services in Detail</h1>
             <p className="section-intro">
-              Discover how HextractDocs transforms your physical and digital documents into structured, AI-ready formats.
+              Discover how Trommel screens and refines your physical and digital documents into structured, AI-ready formats.
             </p>
           </div>
 
@@ -226,8 +226,8 @@ function Services() {
         <div className="container">
           <div className="footer-grid">
             <div className="footer-brand">
-              <h4>HextractDocs</h4>
-              <p>Grounded document annotation services combining deep OCR automation with expert human review.</p>
+              <h4>Trommel</h4>
+              <p>Data sifting and refining services combining advanced machine parsing with expert human validation to extract pure gold from raw files.</p>
             </div>
             
             <div className="footer-col">
@@ -264,7 +264,7 @@ function Services() {
             </div>
           </div>
           <div className="footer-bottom">
-            <p>&copy; 2026 HextractDocs. All rights reserved.</p>
+            <p>&copy; 2026 Trommel. All rights reserved.</p>
           </div>
         </div>
       </footer>
